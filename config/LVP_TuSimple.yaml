@@ -1,0 +1,40 @@
+TRAIN:
+  input_shape: [360, 640]
+
+  seed: ~
+  cuda: TRUE
+  num_workers: 0
+  epoch: 120
+  batch_size: 16
+  init_lr: 0.0005
+  min_lr: 0.000005
+  momentum: 0.9
+  weight_decay: 0
+  ema: 0.965
+
+  lambda_vp: 5
+  lambda_1: 1
+  lambda_2: 0.05
+
+  save_period: 1000
+  save_last_epoch: FALSE
+  save_best_epoch: FALSE
+
+DATASET:
+  base_path: '.\dataset\tusimple'
+  
+  k: 2          # splitting factor
+  sigma: 8      # standard deviation of Gaussain label smoothing
+
+  omega_x: 5    # weight of x coordinate of starting point vector
+  omega_y: 5    # weight of y coordinate of starting point vector
+  omega_end: 3  # weight of y coordinate of ending point vector
+
+MODEL:
+  lanes_num: 6  # maximum number of lanes
+  vp_length: 56 # length of vp vector
+
+EVAL:
+  cuda: TRUE
+  exist_threshold: 0.6
+
