@@ -64,12 +64,12 @@ python train.py --config=config/LVP_TuSimple.yaml
 ```
 ## Eval
 ```shell
-python train.py --config=config/LVP_TuSimple.yaml --checkpoint=your/checkpoint/path
+python eval.py --config=config/LVP_TuSimple.yaml --checkpoint=your/checkpoint/path
 ```
 
 if you want to visualize the result of predicted image
 ```shell
-python train.py --config=config/LVP_TuSimple.yaml --checkpoint=your/checkpoint/path --vis
+python eval.py --config=config/LVP_TuSimple.yaml --checkpoint=your/checkpoint/path --vis
 ```
 
 ## Speed Test

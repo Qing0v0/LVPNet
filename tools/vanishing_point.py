@@ -161,13 +161,17 @@ class VanishingPoint():
                         min_error = error
                         fit_lanes[:, -i - 2] = point
 
-                vp_label[i + 1] = min_vp_x
+                vp_label[i + 1] = min_vp_x if min_vp_x != 0 else W // 2
 
         return vp_label, fit_lanes
     
     @staticmethod
-    def smoothe_vp(vp):
-        vp[1:][vp[1:] != 640] = savgol_filter(vp[1:][vp[1:] != 640], 15, 3, mode= 'nearest')
+    def smoothe_vp(vp, invalid_value=640):
+        INVALID_VALUE = 640
+        if type(invalid_value) == list:
+            for v in invalid_value:
+                vp[vp == v] = INVALID_VALUE
+        vp[1:][vp[1:] != INVALID_VALUE] = savgol_filter(vp[1:][vp[1:] != INVALID_VALUE], 15, 3, mode= 'nearest')
 
         return vp
 
