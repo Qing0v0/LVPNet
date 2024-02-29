@@ -80,7 +80,7 @@ python tools/speed_test.py
 # Result
 | Backbone | Acc | FP | FN |
 | :---     | ---:|---:|---:|
-| [ResNet-18](#)| 95.36 | 12.73 | 4.08 | 
+| [ResNet-18](#)| 95.50 | 13.55 | 3.58 | 
 
 # Reference
 - https://github.com/bubbliiiing/unet-pytorch
