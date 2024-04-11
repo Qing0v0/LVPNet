@@ -126,12 +126,6 @@ class transform():
             vp[1:] = self.width - vp[1:]
             lanes = np.flip(lanes, 0)
             lanes[lanes>0] = self.width - lanes[lanes>0]
-
-        # 上下翻转
-        if(random.random() > 1):
-            image = image.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
-            y = 720 - y
-            vp[0] = 720 - vp[0]
     
         return image, lanes, vp, y
     

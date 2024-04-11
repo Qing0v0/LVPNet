@@ -104,8 +104,8 @@ def fit_one_epoch(model, optimizer, epoch, train_loader, val_loader, step, loss_
             )
         )
 
-    if (len(loss_log.val_losses) <= 1 or 
-        (val_loss_per_step <= min(loss_log.val_losses) and cfg.TRAIN.save_best_epoch)):
+    if (cfg.TRAIN.save_best_epoch and
+        (len(loss_log.val_losses) <= 1 or cfg.TRAIN.save_best_epoch)):
         torch.save(
             model.state_dict(), 
             os.path.join(log_dir, "checkpoint\\best_epoch_weights.pth")

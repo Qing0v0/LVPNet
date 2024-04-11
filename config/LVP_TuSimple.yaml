@@ -1,5 +1,5 @@
 TRAIN:
-  input_shape: [360, 640]
+  input_shape: [360, 640]  
 
   seed: ~
   cuda: TRUE
@@ -13,8 +13,8 @@ TRAIN:
   ema: 0.965
 
   lambda_vp: 5
-  lambda_1: 1
-  lambda_2: 0.05
+  lambda_1: 1   # weight of starting point loss
+  lambda_2: 0.05 # weight of vp loss
 
   save_period: 1000
   save_last_epoch: FALSE

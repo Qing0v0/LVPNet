@@ -4,7 +4,6 @@ import matplotlib
 
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
-from scipy.signal import savgol_filter
 
 
 class LossLog():
@@ -27,24 +26,9 @@ class LossLog():
         
         # plot losses
         plt.figure()
-        plt.plot(range(len(self.train_losses)), self.train_losses, 'red', linewidth = 2, label='train loss')
-        plt.plot(range(len(self.val_losses)), self.val_losses, 'coral', linewidth = 2, label='val loss')
+        plt.plot(range(len(self.train_losses)), self.train_losses, color="#6FBF9B", linewidth = 3, label='train loss')
+        plt.plot(range(len(self.val_losses)), self.val_losses, color="#E963A9", linewidth = 3, label='val loss')
 
-        # plot smoothing losses
-        if len(self.train_losses) > 5:
-            window_length = 15 if len(self.train_losses) > 25 else 5
-            plt.plot(
-                range(len(self.train_losses)), 
-                savgol_filter(self.train_losses, window_length, 3), 
-                'green', linestyle ='--', linewidth=2, label='smoothing train loss'
-            )
-            plt.plot(
-                range(len(self.val_losses)), 
-                savgol_filter(self.val_losses, window_length, 3), 
-                '#8B4513', linestyle ='--', linewidth=2, label='smoothing val loss'
-            )
-
-        plt.grid(True)
         plt.xlabel('Epoch')
         plt.ylabel('Loss')
         plt.legend(loc="upper right")
