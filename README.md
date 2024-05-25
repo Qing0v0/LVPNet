@@ -20,16 +20,15 @@ reconstruct lanes from local vanishing points
 
 
 # Install
--  Clone the project\
-  ...
+-  Clone the project
 -  Install dependencies
-  - Python 3.8
-  - PyTorch 1.9.1
-  - Cuda 11.1
+    - Python 3.8
+    - PyTorch 1.9.1
+    - Cuda 11.1
 
-  ```shell
-  pip install -r requirements.txt
-  ```
+    ```shell
+    pip install -r requirements.txt
+    ```
 
 # Dataset
 ## Download Dataset
