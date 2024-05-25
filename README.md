@@ -21,6 +21,7 @@ reconstruct lanes from local vanishing points
 
 # Install
 -  Clone the project\
+  ...
 -  Install dependencies
   - Python 3.8
   - PyTorch 1.9.1
