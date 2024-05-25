@@ -8,14 +8,19 @@ Code for [Local Vanishing Points for Lane Detection]()
 
 local vanishing points
 <center>
-<img src="utils/fig/vp1.png" width="49%" />
-<img src="utils/fig/vp2.png" width="49%" />
+<img src="utils/fig/vp1.png" width="45%" />
+<img src="utils/fig/vp2.png" width="45%" />
+</center>
+
+reconstruct lanes from local vanishing points
+<center>
+<img src="utils/fig/reconstruction1.png" width="45%" />
+<img src="utils/fig/reconstruction2.png" width="45%" />
 </center>
 
 
 # Install
 -  Clone the project\
-  ...
 -  Install dependencies
   - Python 3.8
   - PyTorch 1.9.1
@@ -53,6 +58,7 @@ TuSimple Base Directory (.\dataset\tusimple)
 ```
 
 ## Generate Vanishing Point Label
+**vanishing points label can be downloaded from release**
 ```shell
 python tools/save_vplabel_tusimple.py
 ```
