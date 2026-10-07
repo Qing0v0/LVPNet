@@ -78,7 +78,7 @@ class VanishingPoint():
             best_horizon_pos = 0
             best_inner_num = 0
 
-            for i in range(500):
+            for i in range(1020):
                 inner_point = list(filter(lambda x: abs(x[1] - i) < sigma, vanishing_points))
                 if(len(inner_point) > best_inner_num):
                     best_inner_num = len(inner_point)
@@ -160,14 +160,13 @@ class VanishingPoint():
                         min_vp_x = vp_x
                         min_error = error
                         fit_lanes[:, -i - 2] = point
-
                 vp_label[i + 1] = min_vp_x if min_vp_x != 0 else W // 2
 
         return vp_label, fit_lanes
     
     @staticmethod
-    def smoothe_vp(vp, invalid_value=640):
-        INVALID_VALUE = 640
+    def smoothe_vp(vp, invalid_value=960):
+        INVALID_VALUE = 960
         if type(invalid_value) == list:
             for v in invalid_value:
                 vp[vp == v] = INVALID_VALUE

@@ -18,29 +18,31 @@ class transform():
             'Contrast',
             'Brightness',
             'Sharpness', 
-            'PosterizeIncreasing',
-            'SolarizeIncreasing',
-            'ColorIncreasing',
-            'ContrastIncreasing',
-            'BrightnessIncreasing',
-            'SharpnessIncreasing',
+            # 'PosterizeIncreasing',
+            # 'SolarizeIncreasing',
+            # 'ColorIncreasing',
+            # 'ContrastIncreasing',
+            # 'BrightnessIncreasing',
+            # 'SharpnessIncreasing',
             #'Cutout'  # NOTE I've implement this as random erasing separately
         ]
-        self.augment = RandAugment(rand_augment_ops(transforms=self.transforms), num_layers=3)
-        self.width = 1280 if dataset == 'tusimple' else 1640
+        self.augment = RandAugment(rand_augment_ops(transforms=self.transforms), num_layers=2)
+        self.width = 1920
 
-    def __call__(self, image, lanes, vp, y, train):
+    def __call__(self, image, lanes, depth, vp, y, train):
         if(train):
             image = self.add_noise(image)
             image = self.randAugment(image)
             image, lanes, vp, y = self.flip_image(image, lanes, vp, y)
-            image, lanes, vp = self.translate_x(image, lanes, vp)
+            image, lanes, vp, depth = self.translate_x(image, lanes, vp, depth)
+            # image = self.AID(np.array(image), lanes, y)
+            # image, lanes, vp = self.scale(image, lanes, vp)
             image = self.RandomErasing(np.array(image), probability=0.25, erasing_num = 1)
             
         else:
             image = np.array(image)
         
-        return image, list(lanes), vp, list(y)
+        return image, list(lanes), vp, list(y), depth
 
     def randAugment(self, image):
         return self.augment(image)
@@ -129,15 +131,16 @@ class transform():
     
         return image, lanes, vp, y
     
-    def translate_x(self, image, lanes, vp):
+    def translate_x(self, image, lanes, vp, depth):
         if(random.random() > 0):
             pixels = random.randint(-200, 200)
             image = image.transform(image.size, Image.AFFINE, (1, 0, pixels, 0, 1, 0), fillcolor = (128, 128, 128))
             lanes[lanes>0] = lanes[lanes>0] - pixels
             lanes[lanes>self.width] = -2
             vp[1:] = vp[1:] - pixels
+            depth[lanes < 0] = -2
         
-        return image, lanes, vp
+        return image, lanes, vp, depth
 
 if __name__ == '__main__':
     image = Image.open(r'D:\Code\pytorch-auto-drive-master\dataset\tusimple\clips\0313-1\\60\\1.jpg')
