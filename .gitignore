@@ -3,3 +3,6 @@ __pycache__/
 
 # train log
 log/
+
+# dataset
+dataset/tusimple/

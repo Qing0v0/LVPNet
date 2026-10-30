@@ -33,7 +33,7 @@ def preprocess_image(image: np.array, cfg) -> torch.Tensor:
     transform = transforms.Compose([
         transforms.Resize(cfg.TRAIN.input_shape), 
         transforms.ToTensor(),
-        transforms.Normalize(mean = [0.485, 0.456, 0.406], std = [0.229, 0.224, 0.225])
+        # transforms.Normalize(mean = [0.485, 0.456, 0.406], std = [0.229, 0.224, 0.225])
     ])
     
     image_copy = image.copy()

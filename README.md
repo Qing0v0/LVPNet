@@ -58,10 +58,13 @@ TuSimple Base Directory (.\dataset\tusimple)
 ```
 
 ## Generate Vanishing Point Label
-**vanishing points label can be downloaded from release**
 ```shell
 python tools/save_vplabel_tusimple.py
 ```
+**vanishing points label can be downloaded from release**\
+[train_vp.json](#https://github.com/Qing0v0/LVPNet/files/15441980/train_vp.json)\
+[val_vp.json](#https://github.com/Qing0v0/LVPNet/files/15441978/val_vp.json)
+
 
 # Get Start
 ## Train
@@ -86,7 +89,7 @@ python tools/speed_test.py
 # Result
 | Backbone | Acc | FP | FN |
 | :---     | ---:|---:|---:|
-| [ResNet-18](#)| 95.50 | 13.55 | 3.58 | 
+| [ResNet-18](#https://github.com/Qing0v0/LVPNet/releases/download/v1.0/lvp_tusimple.pth)| 95.50 | 13.55 | 3.58 | 
 
 # Reference
 - https://github.com/bubbliiiing/unet-pytorch

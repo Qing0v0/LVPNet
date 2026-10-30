@@ -54,8 +54,8 @@ class TusimpleDataset(Dataset):
         image =  np.transpose((np.array(image, np.float64)/255.0), [2, 0, 1])
 
         # image normalization (B G R)
-        for channel in range(3):
-            image[channel, :, :] = (image[channel, :, :] - self.mean[channel])/self.std[channel]
+        # for channel in range(3):
+        #     image[channel, :, :] = (image[channel, :, :] - self.mean[channel])/self.std[channel]
         
         # normalize vp_y to (0, 1), vp_x to (-1, 1)
         vanishing_points[0] /= 720
